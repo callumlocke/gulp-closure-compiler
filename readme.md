@@ -23,7 +23,7 @@ var closureCompiler = require('gulp-closure-compiler');
 gulp.task('default', function () {
 	gulp.src('src/app.js')
 		.pipe(closureCompiler())
-		.pipe(gulp.dest('dist/app.js'));
+		.pipe(gulp.dest('dist'));
 });
 ```
 
