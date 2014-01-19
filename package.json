@@ -1,6 +1,6 @@
 {
   "name": "gulp-closure-compiler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Minify JavaScript with Closure Compiler",
   "license": "MIT",
   "repository": "sindresorhus/gulp-closure-compiler",
