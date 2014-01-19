@@ -1,17 +1,29 @@
 'use strict';
-var es = require('event-stream');
 var gutil = require('gulp-util');
+var through = require('through2');
 var ClosureCompiler = require('closurecompiler');
 
 module.exports = function (options) {
-	return es.map(function (file, cb) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			this.push(file);
+			return cb();
+		}
+
+		if (file.isStream()) {
+			this.emit('error', new gutil.PluginError('gulp-closure-compiler', 'Streaming not supported'));
+			return cb();
+		}
+
 		ClosureCompiler.compile(file.path, options, function (err, data) {
 			if (err) {
-				return cb(err);
+				this.emit('error', new gutil.PluginError('gulp-closure-compiler', err));
+				return cb();
 			}
 
 			file.contents = new Buffer(data);
-			cb(null, file);
-		});
+			this.push(file);
+			cb();
+		}.bind(this));
 	});
 };

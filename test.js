@@ -14,6 +14,7 @@ it('should minify JS', function (cb) {
 	});
 
 	stream.write(new gutil.File({
-		path: 'fixture.js'
+		path: 'fixture.js',
+		contents: new Buffer('if (true) {\n	console.log(\'foo\');\n}')
 	}));
 });

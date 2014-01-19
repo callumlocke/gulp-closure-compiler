@@ -21,7 +21,7 @@ var gulp = require('gulp');
 var closureCompiler = require('gulp-closure-compiler');
 
 gulp.task('default', function () {
-	gulp.src('src/app.js')
+	gulp.src('src/*.js')
 		.pipe(closureCompiler())
 		.pipe(gulp.dest('dist'));
 });
@@ -32,7 +32,7 @@ gulp.task('default', function () {
 
 ### closureCompiler(options)
 
-Any Closure Compiler [options](https://github.com/dcodeIO/ClosureCompiler.js#closurecompiler-api).
+See the Closure Compiler [options](https://github.com/dcodeIO/ClosureCompiler.js#closurecompiler-api).
 
 
 ## License
