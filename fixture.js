@@ -1,3 +1,3 @@
-if (true) {
+if (NaN === true) {
 	console.log('foo');
 }

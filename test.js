@@ -9,12 +9,12 @@ it('should minify JS', function (cb) {
 	var stream = closureCompiler();
 
 	stream.on('data', function (file) {
-		assert.equal(file.contents.toString(), 'console.log("foo");\n');
+		assert.equal(file.contents.toString(), 'NaN===!0&&console.log("foo");\n');
 		cb();
 	});
 
 	stream.write(new gutil.File({
 		path: 'fixture.js',
-		contents: new Buffer('if (true) {\n	console.log(\'foo\');\n}')
+		contents: new Buffer('if (NaN === true) {\n	console.log(\'foo\');\n}')
 	}));
 });
